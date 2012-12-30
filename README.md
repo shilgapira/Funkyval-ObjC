@@ -4,7 +4,7 @@ Quick and dirty expression evaluator I hacked together. It's pretty handy for ap
 
 Funkyval evaluates arithmetic, boolean and string expressions with support for getting and setting values from variables.
 
-Should work on any version of iOS or OS X.
+Should work on any non-ancient version of iOS and Mac OS X.
 
 
 ## Usage
@@ -25,7 +25,7 @@ NSUInteger result = [mult evaluateIntegerWithVariables:variables]; // 8
 variables[@"door"] = @"open";
 
 id<FKFunkyval> foo = [FKFunkyval funkyvalWithExpression:@"door == open"];
-if ([foo evaluateBooleanWithVariables:variables]) {
+if ([foo evaluateBoolWithVariables:variables]) {
 	// close the door
 	[[FKFunkyval funkyvalWithExpression:@"door = closed"] performWithVariables:variables];
 }
@@ -38,7 +38,7 @@ NSString *validatorExpression = json[@"validator"];
 id<FKFunkyval> validator = [FKFunkyval funkyvalWithExpression:validatorExpression];
 
 NSDictionary *userData = ...;
-if ([validator evaluateBooleanWithVariables:userData]) {
+if ([validator evaluateBoolWithVariables:userData]) {
 	// success
 } else {
 	// error
